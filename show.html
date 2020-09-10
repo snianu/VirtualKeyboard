@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<style>
+    body {
+        display: grid;
+        width: calc(100vw - 16px);
+        height: calc(100vh - 16px);
+        grid-template-rows: repeat(3, minmax(min-content, max-content))  1fr;
+    }
+    [contenteditable] {
+        border: 1px solid #ccc;
+        border-top: none;
+
+        padding: 4px;
+        outline: none;
+
+        overflow: auto;
+    }
+    #toolbar {
+        display: grid;
+
+        grid-gap: 10px;
+        grid-template-columns: repeat(3, minmax(min-content, max-content));
+
+        background-color: #eee;
+        border: 1px solid #ccc;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+
+        padding: 4px;
+    }
+    h1 {
+        font-family: sans-serif;
+        margin: 10px 0;
+    }
+    dl {
+        display: grid;
+        
+        grid-column-gap: 4px;
+        grid-template-columns: repeat(2, minmax(min-content, max-content));
+
+        font-family: sans-serif;
+        font-size: 12px;
+    }
+    dt {
+        font-weight: bold;
+    }
+    dd {
+        margin: 0;
+    }
+</style>
+<h1>Editor</h1>
+<dl>
+    <dt>three-finger-tap:</dt>
+    <dd>show the virtual keyboard</dd>
+</dl>
+<div id="toolbar">
+    <img src="./icons/content_cut-24px.svg" alt="cut">
+    <img src="./icons/content_copy-24px.svg" alt="copy">
+    <img src="./icons/content_paste-24px.svg" alt="paste">
+</div>
+<div virtualkeyboardpolicy="manual" contenteditable spellcheck="false">
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+</div>
+<script type="module">
+    import GestureRecognizer from "./GestureRecognizer.js"
+
+    let ce = document.querySelector("[contenteditable]")
+    let gr = new GestureRecognizer()
+    gr.watch(ce)
+
+    gr.addEventListener("threefingertap", e => {
+        ce.focus()
+        navigator.virtualKeyboard.show()
+    })
+</script>

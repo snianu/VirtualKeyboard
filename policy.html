@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<style>
+    .tap-target {
+        width: 300px;
+        height: 100px;
+
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #eee;
+
+        margin: 10px;
+
+        font-family: sans-serif;
+
+        display: grid;
+        place-items: center;
+
+        outline: none;
+    }
+</style>
+<div class="tap-target" virtualkeyboardpolicy="manual" contenteditable>editable, virtualkeyboardpolicy=manual</div>
+<div class="tap-target" virtualkeyboardpolicy="auto" contenteditable>editable, virtualkeyboardpolicy=auto</div>
+<div class="tap-target">not editable</div>
