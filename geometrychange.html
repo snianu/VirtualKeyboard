@@ -5,7 +5,8 @@
         display: grid;
         width: calc(100vw - 16px);
         height: calc(100vh - 16px);
-        grid-template-rows: repeat(3, minmax(min-content, max-content)) 1fr min-content;
+        grid-template-rows: repeat(3, minmax(min-content, max-content)) 1fr min-content 
+            calc(env(keyboard-inset-bottom) - env(keyboard-inset-top));
     }
     [contenteditable] {
         border: 1px solid #ccc;
@@ -40,7 +41,6 @@
         grid-template-columns: repeat(2, minmax(min-content, max-content));
 
         font-family: sans-serif;
-        font-size: 12px;
     }
     dt {
         font-weight: bold;
@@ -157,7 +157,6 @@
         proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
 </div>
-<div id="keyboard-spacer"></div>
 <script type="module">
     import GestureRecognizer from "./GestureRecognizer.js"
 
@@ -170,15 +169,5 @@
         navigator.virtualKeyboard.show()
     })
 
-    let spacer = document.querySelector("#keyboard-spacer")
     navigator.virtualKeyboard.overlaysContent = true
-    navigator.virtualKeyboard.addEventListener("geometrychange", e => {
-        let r = e.boundingRect
-        if (r.height > 0) {
-            spacer.style.height = `${r.height + 8}px`
-        }
-        else {
-            spacer.style.removeProperty("height")
-        }
-    })
 </script>

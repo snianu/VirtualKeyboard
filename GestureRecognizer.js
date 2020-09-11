@@ -24,6 +24,7 @@ export default class GestureRecognizer extends EventTarget {
         this.pointerUpsSeenDuringTapInterval++
         if (this.pointerDownsSeenDuringTapInterval == 3 &&
             this.pointerUpsSeenDuringTapInterval == 3) {
+            console.log("threefingertap detected")
             this.dispatchEvent(new CustomEvent("threefingertap"))
         }
     }
